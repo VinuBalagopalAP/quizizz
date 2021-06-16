@@ -11,6 +11,9 @@ class InCorrectSnackBar extends StatelessWidget {
               const SnackBar(
                 content: Text(
                   'Inorrect',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 backgroundColor: Colors.red,
                 behavior: SnackBarBehavior.floating,

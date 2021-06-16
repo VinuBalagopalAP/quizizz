@@ -11,6 +11,9 @@ class CorrectSnackBar extends StatelessWidget {
               const SnackBar(
                 content: Text(
                   'Correct',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 backgroundColor: Colors.green,
                 behavior: SnackBarBehavior.floating,
