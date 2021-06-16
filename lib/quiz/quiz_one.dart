@@ -10,8 +10,14 @@ class QuizOne extends StatefulWidget {
 class _QuizOneState extends State<QuizOne> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: null,
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Text(
+            'OK',
+          ),
+        ),
+      ),
     );
   }
 }

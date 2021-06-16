@@ -1,4 +1,4 @@
-import 'package:centrric_assignment/animation/countdown.dart';
+import 'package:centrric_assignment/animation/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
