@@ -20,7 +20,9 @@ class InCorrectSnackBar extends StatelessWidget {
               ),
             );
           },
-          child: const Text('Show SnackBar'),
+          child: Center(
+            child: const Text('Show SnackBar'),
+          ),
         ),
       ),
     );
