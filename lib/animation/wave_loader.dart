@@ -23,7 +23,7 @@ class _WaveLoaderState extends State<WaveLoader> {
     return Timer(duration, route);
   }
 
-  // pages() async{await }
+//  pages() async{await }
 
   route() {
     Navigator.pushReplacement(

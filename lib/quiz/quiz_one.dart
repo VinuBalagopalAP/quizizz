@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 class QuizOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomOptionCards(
-        optionOne: 'Alxander Fleming',
-        optionTwo: 'Alxander\nGraham Bell',
-        optionThree: 'Thomas\nAlva Edison',
-        optionFour: 'Mars',
-        question: 'Which planet in our solar system is known as red planet?',
-      ),
+    return CustomOptionCards(
+      optionOne: 'Alxander Fleming',
+      optionTwo: 'Alxander\nGraham Bell',
+      optionThree: 'Thomas\nAlva Edison',
+      optionFour: 'Mars',
+      question: 'Which planet in our solar system is known as red planet?',
     );
   }
 }

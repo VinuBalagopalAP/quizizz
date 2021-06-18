@@ -7,15 +7,13 @@ class QuestionTextStyle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.center,
-      child: Text(
-        text,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 30,
-          color: Colors.white,
-        ),
+    return Text(
+      text,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 30,
+        color: Colors.white,
       ),
     );
   }

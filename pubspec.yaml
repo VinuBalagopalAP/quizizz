@@ -32,6 +32,7 @@ dependencies:
   animated_text_kit: ^4.2.1
   hexcolor: ^2.0.4
   flutter_custom_cards: ^0.1.0
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
