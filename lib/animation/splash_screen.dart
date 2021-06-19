@@ -18,7 +18,7 @@ class _CountDownState extends State<CountDown> {
 
   startTimer() async {
     var duration = Duration(
-      seconds: 11,
+      seconds: 12,
     );
     return Timer(duration, route);
   }
@@ -36,7 +36,7 @@ class _CountDownState extends State<CountDown> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.blue[900],
+        backgroundColor: Colors.purple.shade900,
         body: AnimatedCountDown(),
       ),
     );

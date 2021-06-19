@@ -5,13 +5,15 @@ import 'package:centrric_assignment/quiz/question.dart';
 class Quiz with ChangeNotifier {
   int index = 0;
   bool hasFinshed = false;
+  bool hasAnswered = false;
+  String selectedAnswer;
   List<Question> _questions = [
     Question(
-      question: 'Which Planet In Our Solar System is Known as Red Planer?',
+      question: 'Which Planet In Our Solar System is Known as Red Planer',
       options: {
-        1: 'Alexander\nFleming',
-        2: 'Alexander\nGraham Bell',
-        3: 'Thomas\nAlva Edison',
+        1: 'Alexander Fleming',
+        2: 'Alexander Graham Bell',
+        3: 'Thomas Alva Edison',
         4: 'Mars',
       },
       answer: 'Mars',
@@ -20,8 +22,8 @@ class Quiz with ChangeNotifier {
       question: 'Who invented the Light Bulb?',
       options: {
         1: 'Jupiter',
-        2: 'Alexander\nGraham Bell',
-        3: 'Thomas\nAlva Edison',
+        2: 'Alexander Graham Bell',
+        3: 'Thomas Alva Edison',
         4: 'Mars',
       },
       answer: 'Thomas Alva Edison',
@@ -29,9 +31,9 @@ class Quiz with ChangeNotifier {
     Question(
       question: 'Who discovered Penincillin?',
       options: {
-        1: 'Alexander\nFleming',
-        2: 'Alexander\nGraham Bell',
-        3: 'Thomas\nAlva Edison',
+        1: 'Alexander Fleming',
+        2: 'Alexander Graham Bell',
+        3: 'Thomas Alva Edison',
         4: 'Jupiter',
       },
       answer: 'Alexander Graham Bell',
@@ -42,18 +44,26 @@ class Quiz with ChangeNotifier {
     return [..._questions];
   }
 
-  void onValidate(String selectedAnswer, int i) {
+  void onValidate(String answer, int i) {
     print(_questions.length);
-    if (selectedAnswer == _questions[i].answer) {
+    hasAnswered = true;
+    selectedAnswer = answer;
+    if (answer == _questions[i].answer) {
       print('Correct');
-      index++;
     } else {
       print('wrong');
-      index++;
     }
+
+    notifyListeners();
+  }
+
+  void onNext(int i) {
+    index++;
     if (i >= _questions.length - 1) {
       hasFinshed = true;
     }
+
+    hasAnswered = false;
     notifyListeners();
   }
 }

@@ -15,10 +15,10 @@ class AnimatedCountDown extends StatelessWidget {
           child: Center(
             child: AnimatedTextKit(
               animatedTexts: [
-                FadeAnimatedText('3'),
-                FadeAnimatedText('2'),
-                FadeAnimatedText('1'),
-                FadeAnimatedText('Go!'),
+                ScaleAnimatedText('3'),
+                ScaleAnimatedText('2'),
+                ScaleAnimatedText('1'),
+                ScaleAnimatedText('Go!'),
               ],
               onTap: () {
                 print("Tap Event");

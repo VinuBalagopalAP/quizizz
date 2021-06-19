@@ -15,59 +15,137 @@ class _QuizHome extends State<QuizHome> {
     var questions = quiz.questions;
     int index = quiz.index;
     bool hasFinished = quiz.hasFinshed;
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          color: Colors.purple.shade900,
-          child: hasFinished
-              ? Center(
-                  child: Text(
-                    'Quiz Finished',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                    ),
-                  ),
-                )
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      questions[index].question,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                      ),
-                    ),
-                    GridView(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.all(10.0),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 2 / 2,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                      ),
-                      children: [
-                        AnswerGridIterm(
-                            questions[index].options[1], Colors.amber, index),
-                        AnswerGridIterm(
-                            questions[index].options[2], Colors.blue, index),
-                        AnswerGridIterm(questions[index].options[3],
-                            Colors.blueGrey, index),
-                        AnswerGridIterm(
-                          questions[index].options[4],
-                          Colors.cyan,
-                          index,
-                        ),
-                      ],
-                    ),
-                  ],
+    bool hasAnswered = quiz.hasAnswered;
+    String selectedAnswer = quiz.selectedAnswer;
+
+    Color value(String correctAnswer) {
+      if (correctAnswer == questions[index].answer) {
+        print('green');
+        return Colors.green;
+      } else {
+        print('red');
+        return Colors.red;
+      }
+    }
+
+    bool visible(String selectedAnswer, String option) {
+      print(selectedAnswer);
+      print(option);
+      print(questions[index].answer);
+      if (selectedAnswer.contains(option)) {
+        print('1visible');
+        return true;
+      }
+      if (questions[index].answer.contains(option)) {
+        print('2visible');
+        return true;
+      }
+      print('notVisible');
+      return false;
+    }
+
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Container(
+        // height: double.infinity,
+        // width: double.infinity,
+        child: hasFinished
+            ? Center(
+                child: Text(
+                  'Quiz Finished',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: 30),
                 ),
-        ),
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    questions[index].question,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 30),
+                  ),
+                  GridView(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(10.0),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 2 / 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    children: [
+                      AnswerGridIterm(
+                        questions[index].options[1],
+                        hasAnswered
+                            ? value(
+                                questions[index].options[1],
+                              )
+                            : Colors.amber,
+                        index,
+                        hasAnswered
+                            ? visible(
+                                selectedAnswer,
+                                questions[index].options[1],
+                              )
+                            : true,
+                      ),
+                      AnswerGridIterm(
+                        questions[index].options[2],
+                        hasAnswered
+                            ? value(
+                                questions[index].options[2],
+                              )
+                            : Colors.blue,
+                        index,
+                        hasAnswered
+                            ? visible(
+                                selectedAnswer,
+                                questions[index].options[2],
+                              )
+                            : true,
+                      ),
+                      AnswerGridIterm(
+                        questions[index].options[3],
+                        hasAnswered
+                            ? value(
+                                questions[index].options[3],
+                              )
+                            : Colors.blueGrey,
+                        index,
+                        hasAnswered
+                            ? visible(
+                                selectedAnswer,
+                                questions[index].options[3],
+                              )
+                            : true,
+                      ),
+                      AnswerGridIterm(
+                        questions[index].options[4],
+                        hasAnswered
+                            ? value(
+                                questions[index].options[4],
+                              )
+                            : Colors.cyan,
+                        index,
+                        hasAnswered
+                            ? visible(
+                                selectedAnswer,
+                                questions[index].options[4],
+                              )
+                            : true,
+                      ),
+                    ],
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      quiz.onNext(index);
+                    },
+                    child: Text('Next'),
+                  ),
+                ],
+              ),
       ),
     );
   }
