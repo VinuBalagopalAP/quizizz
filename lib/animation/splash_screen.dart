@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:centrric_assignment/animation/count_down.dart';
-
 import 'package:flutter/material.dart';
+import 'package:centrric_assignment/animation/count_down.dart';
+import 'package:centrric_assignment/screens/quiz_home.dart';
 
 class CountDown extends StatefulWidget {
   @override
@@ -27,7 +27,7 @@ class _CountDownState extends State<CountDown> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => QuizOne(),
+        builder: (context) => QuizHome(),
       ),
     );
   }
