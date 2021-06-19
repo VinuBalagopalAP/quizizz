@@ -1,9 +1,9 @@
-class Question {
+class QuestionModel {
   final String question;
   final Map<int, String> options;
   final String answer;
 
-  Question({
+  QuestionModel({
     required this.question,
     required this.options,
     required this.answer,

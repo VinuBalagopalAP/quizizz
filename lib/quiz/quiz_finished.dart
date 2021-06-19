@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 
-class QuestionTextStyle extends StatelessWidget {
-  const QuestionTextStyle({required this.text});
-
-  final String text;
-
+class QuizFinshed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      'Quiz Finished',
       textAlign: TextAlign.center,
       style: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 30,
         color: Colors.white,
+        fontSize: 30,
       ),
     );
   }

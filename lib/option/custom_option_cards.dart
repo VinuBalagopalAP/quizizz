@@ -1,6 +1,6 @@
 import 'package:centrric_assignment/common_widgets/custom_cards.dart';
-import 'package:centrric_assignment/common_widgets/question_text_style.dart';
-import 'package:centrric_assignment/quiz/quiz_two.dart';
+import 'package:centrric_assignment/quiz/quiz.dart';
+
 import 'package:flutter/material.dart';
 
 class CustomOptionCards extends StatelessWidget {
@@ -29,7 +29,6 @@ class CustomOptionCards extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: 24.0,
             ),
-            child: QuestionTextStyle(text: question),
           ),
           SizedBox(
             height: 32,
@@ -103,7 +102,7 @@ class CustomOptionCards extends StatelessWidget {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QuizTwo(),
+                        builder: (context) => Quiz(),
                       ),
                     );
                   },

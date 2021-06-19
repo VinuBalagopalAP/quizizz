@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:centrric_assignment/animation/count_down.dart';
-import 'package:centrric_assignment/quiz/quiz_one.dart';
+
 import 'package:flutter/material.dart';
 
 class CountDown extends StatefulWidget {

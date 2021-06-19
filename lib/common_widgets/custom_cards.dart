@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomCards extends StatelessWidget {
+class CustomCards extends StatefulWidget {
   CustomCards({
     required this.child,
     required this.color,
@@ -18,19 +18,24 @@ class CustomCards extends StatelessWidget {
   final VoidCallback onPressed;
 
   @override
+  _CustomCardsState createState() => _CustomCardsState();
+}
+
+class _CustomCardsState extends State<CustomCards> {
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height,
-      width: width,
+      height: widget.height,
+      width: widget.width,
       child: ElevatedButton(
-        child: child,
-        onPressed: onPressed,
+        child: widget.child,
+        onPressed: widget.onPressed,
         style: ElevatedButton.styleFrom(
-          primary: color,
+          primary: widget.color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(
-                borderRadius,
+                widget.borderRadius,
               ),
             ),
           ),
