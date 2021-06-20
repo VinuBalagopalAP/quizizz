@@ -34,11 +34,9 @@ class _CountDownState extends State<CountDown> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.purple.shade900,
-        body: AnimatedCountDown(),
-      ),
+    return Scaffold(
+      backgroundColor: Colors.purple.shade900,
+      body: AnimatedCountDown(),
     );
   }
 }

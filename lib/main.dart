@@ -12,11 +12,9 @@ class MyApp extends StatelessWidget {
       create: (context) => Quiz(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SafeArea(
-          child: Scaffold(
-            backgroundColor: Colors.purple.shade900,
-            body: HomeGif(),
-          ),
+        home: Scaffold(
+          backgroundColor: Colors.purple.shade900,
+          body: HomeGif(),
         ),
       ),
     );

@@ -7,6 +7,10 @@ class Quiz with ChangeNotifier {
   bool hasFinshed = false;
   bool hasAnswered = false;
   String selectedAnswer;
+  int score = 0;
+  int correctAnswers = 0;
+  int wrongAnswers = 0;
+  int streak = 0;
   List<Question> _questions = [
     Question(
       question: 'Which Planet In Our Solar System is Known as Red Planet?',
@@ -44,14 +48,43 @@ class Quiz with ChangeNotifier {
     return [..._questions];
   }
 
-  void onValidate(String answer, int i) {
+  void onValidate(String answer, int i, BuildContext context) {
     print(_questions.length);
     hasAnswered = true;
     selectedAnswer = answer;
     if (answer == _questions[i].answer) {
       print('Correct');
+      streak++;
+      score += 10;
+      correctAnswers++;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Correct',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          backgroundColor: Colors.green,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
     } else {
       print('wrong');
+      streak = 0;
+      wrongAnswers++;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Inorrect',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
     }
 
     notifyListeners();

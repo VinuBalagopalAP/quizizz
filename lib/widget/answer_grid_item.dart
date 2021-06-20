@@ -18,12 +18,18 @@ class AnswerGridIterm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Function validate = Provider.of<Quiz>(context).onValidate;
+    bool answered = Provider.of<Quiz>(context).hasAnswered;
     return GestureDetector(
       onTap: () {
-        validate(text, index);
+        if (!answered) {
+          validate(text, index, context);
+        }
       },
-      child: Visibility(
-        visible: visible,
+      // child: Visibility(
+      //   visible: visible,
+      child: AnimatedOpacity(
+        opacity: visible ? 1.0 : 0.0,
+        duration: Duration(milliseconds: 500),
         child: Card(
           color: color,
           child: Center(
