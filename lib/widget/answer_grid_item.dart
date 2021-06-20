@@ -6,11 +6,13 @@ class AnswerGridIterm extends StatelessWidget {
   final String text;
   final Color color;
   final int index;
+  final bool visible;
 
   AnswerGridIterm(
     this.text,
     this.color,
     this.index,
+    this.visible,
   );
 
   @override
@@ -20,15 +22,19 @@ class AnswerGridIterm extends StatelessWidget {
       onTap: () {
         validate(text, index);
       },
-      child: Card(
-        color: color,
-        child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 20.0,
+      child: Visibility(
+        visible: visible,
+        child: Card(
+          color: color,
+          child: Center(
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20.0,
+              ),
             ),
           ),
         ),

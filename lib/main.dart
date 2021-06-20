@@ -1,7 +1,7 @@
 import 'package:centrric_assignment/quiz/quiz.dart';
+import 'package:centrric_assignment/screens/home_gif.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:centrric_assignment/animation/splash_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +13,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: SafeArea(
-          child: CountDown(),
+          child: Scaffold(
+            backgroundColor: Colors.purple.shade900,
+            body: HomeGif(),
+          ),
         ),
       ),
     );

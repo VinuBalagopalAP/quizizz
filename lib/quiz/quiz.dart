@@ -9,7 +9,7 @@ class Quiz with ChangeNotifier {
   String selectedAnswer;
   List<Question> _questions = [
     Question(
-      question: 'Which Planet In Our Solar System is Known as Red Planer',
+      question: 'Which Planet In Our Solar System is Known as Red Planet?',
       options: {
         1: 'Alexander Fleming',
         2: 'Alexander Graham Bell',

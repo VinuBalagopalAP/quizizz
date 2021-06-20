@@ -18,7 +18,7 @@ class _CountDownState extends State<CountDown> {
 
   startTimer() async {
     var duration = Duration(
-      seconds: 12,
+      seconds: 11,
     );
     return Timer(duration, route);
   }
