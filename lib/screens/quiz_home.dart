@@ -154,6 +154,9 @@ class _QuizHome extends State<QuizHome> {
                             quiz.onNext(index);
                           },
                           child: Text('Next'),
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.deepPurple.shade400,
+                          ),
                         ),
                       ],
                     ),

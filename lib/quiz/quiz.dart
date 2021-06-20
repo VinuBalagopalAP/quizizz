@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:centrric_assignment/quiz/question.dart';
@@ -46,6 +47,10 @@ class Quiz with ChangeNotifier {
 
   List<Question> get questions {
     return [..._questions];
+  }
+
+  void onReset(int i) {
+    SystemNavigator.pop();
   }
 
   void onValidate(String answer, int i, BuildContext context) {
