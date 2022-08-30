@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ScoreBoard extends StatelessWidget {
-  int get i => null;
+  int? get i => null;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class ScoreBoard extends StatelessWidget {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                primary: Colors.deepPurple.shade400,
+                backgroundColor: Colors.deepPurple.shade400,
               ),
               onPressed: () {
                 quiz.onReset(i);

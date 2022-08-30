@@ -18,9 +18,9 @@ class _QuizHome extends State<QuizHome> {
     int index = quiz.index;
     bool hasFinished = quiz.hasFinshed;
     bool hasAnswered = quiz.hasAnswered;
-    String selectedAnswer = quiz.selectedAnswer;
+    String? selectedAnswer = quiz.selectedAnswer;
 
-    Color value(String correctAnswer) {
+    Color value(String? correctAnswer) {
       if (correctAnswer == questions[index].answer) {
         print('green');
         return Colors.green;
@@ -97,8 +97,8 @@ class _QuizHome extends State<QuizHome> {
                               index,
                               hasAnswered
                                   ? visible(
-                                      selectedAnswer,
-                                      questions[index].options[1],
+                                      selectedAnswer!,
+                                      questions[index].options[1]!,
                                     )
                                   : true,
                             ),
@@ -112,8 +112,8 @@ class _QuizHome extends State<QuizHome> {
                               index,
                               hasAnswered
                                   ? visible(
-                                      selectedAnswer,
-                                      questions[index].options[2],
+                                      selectedAnswer!,
+                                      questions[index].options[2]!,
                                     )
                                   : true,
                             ),
@@ -127,8 +127,8 @@ class _QuizHome extends State<QuizHome> {
                               index,
                               hasAnswered
                                   ? visible(
-                                      selectedAnswer,
-                                      questions[index].options[3],
+                                      selectedAnswer!,
+                                      questions[index].options[3]!,
                                     )
                                   : true,
                             ),
@@ -142,8 +142,8 @@ class _QuizHome extends State<QuizHome> {
                               index,
                               hasAnswered
                                   ? visible(
-                                      selectedAnswer,
-                                      questions[index].options[4],
+                                      selectedAnswer!,
+                                      questions[index].options[4]!,
                                     )
                                   : true,
                             ),
@@ -155,7 +155,7 @@ class _QuizHome extends State<QuizHome> {
                           },
                           child: Text('Next'),
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.deepPurple.shade400,
+                            backgroundColor: Colors.deepPurple.shade400,
                           ),
                         ),
                       ],

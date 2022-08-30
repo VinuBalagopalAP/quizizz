@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AnswerGridIterm extends StatelessWidget {
-  final String text;
+  final String? text;
   final Color color;
   final int index;
   final bool visible;
@@ -34,7 +34,7 @@ class AnswerGridIterm extends StatelessWidget {
           color: color,
           child: Center(
             child: Text(
-              text,
+              text!,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,

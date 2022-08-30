@@ -1,5 +1,4 @@
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:centrric_assignment/quiz/question.dart';
 
@@ -7,7 +6,7 @@ class Quiz with ChangeNotifier {
   int index = 0;
   bool hasFinshed = false;
   bool hasAnswered = false;
-  String selectedAnswer;
+  String? selectedAnswer;
   int score = 0;
   int correctAnswers = 0;
   int wrongAnswers = 0;
@@ -49,7 +48,7 @@ class Quiz with ChangeNotifier {
     return [..._questions];
   }
 
-  void onReset(int i) {
+  void onReset(int? i) {
     SystemNavigator.pop();
   }
 
