@@ -1,4 +1,4 @@
-import 'package:centrric_assignment/quiz/quiz.dart';
+import 'package:centrric_assignment/providers/quiz_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,8 +17,8 @@ class AnswerGridIterm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Function validate = Provider.of<Quiz>(context).onValidate;
-    bool answered = Provider.of<Quiz>(context).hasAnswered;
+    Function validate = Provider.of<QuizProvider>(context).onValidate;
+    bool answered = Provider.of<QuizProvider>(context).hasAnswered;
     return GestureDetector(
       onTap: () {
         if (!answered) {

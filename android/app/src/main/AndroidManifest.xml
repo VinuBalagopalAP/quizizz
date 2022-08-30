@@ -3,6 +3,7 @@
    <application
         android:label="Quizizz"
         android:icon="@mipmap/ic_launcher">
+        <uses-permission android:name="android.permission.INTERNET" /> <!-- permission -->
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

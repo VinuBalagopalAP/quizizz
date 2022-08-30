@@ -1,4 +1,4 @@
-import 'package:centrric_assignment/quiz/quiz.dart';
+import 'package:centrric_assignment/providers/quiz_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,7 +7,7 @@ class ScoreBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var quiz = Provider.of<Quiz>(context);
+    var quiz = Provider.of<QuizProvider>(context);
     var score = quiz.score;
     var questionLength = quiz.questions.length;
     var correctAnswers = quiz.correctAnswers;

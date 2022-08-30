@@ -1,5 +1,5 @@
-import 'package:centrric_assignment/quiz/quiz.dart';
-import 'package:centrric_assignment/screens/home_gif.dart';
+import 'package:centrric_assignment/providers/quiz_provider.dart';
+import 'package:centrric_assignment/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,13 +9,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => Quiz(),
+      create: (context) => QuizProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          backgroundColor: Colors.purple.shade900,
-          body: HomeGif(),
-        ),
+        onGenerateRoute: MyRoutes.myRoutes,
       ),
     );
   }

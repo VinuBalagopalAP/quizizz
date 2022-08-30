@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:centrric_assignment/quiz/question.dart';
+import 'package:centrric_assignment/model/quiz_model.dart';
 
-class Quiz with ChangeNotifier {
+class QuizProvider with ChangeNotifier {
   int index = 0;
   bool hasFinshed = false;
   bool hasAnswered = false;
@@ -11,8 +11,9 @@ class Quiz with ChangeNotifier {
   int correctAnswers = 0;
   int wrongAnswers = 0;
   int streak = 0;
-  List<Question> _questions = [
-    Question(
+
+  List<QuizModel> _questions = [
+    QuizModel(
       question: 'Which Planet In Our Solar System is Known as Red Planet?',
       options: {
         1: 'Alexander Fleming',
@@ -22,7 +23,7 @@ class Quiz with ChangeNotifier {
       },
       answer: 'Mars',
     ),
-    Question(
+    QuizModel(
       question: 'Who invented the Light Bulb?',
       options: {
         1: 'Jupiter',
@@ -32,7 +33,7 @@ class Quiz with ChangeNotifier {
       },
       answer: 'Thomas Alva Edison',
     ),
-    Question(
+    QuizModel(
       question: 'Who discovered Penincillin?',
       options: {
         1: 'Alexander Fleming',
@@ -44,7 +45,7 @@ class Quiz with ChangeNotifier {
     ),
   ];
 
-  List<Question> get questions {
+  List<QuizModel> get questions {
     return [..._questions];
   }
 
@@ -103,4 +104,30 @@ class Quiz with ChangeNotifier {
     hasAnswered = false;
     notifyListeners();
   }
+
+  // Future<void> getQuestions() async {
+  //   final uri = "https://api-questions.herokuapp.com/questions";
+
+  //   try {
+  //     final response = await http.get(Uri.parse(uri));
+
+  //     if (response.statusCode == 200) {
+  //       final questions = json.decode(response.body);
+
+  //       _questions = questions.map((question) {
+  //         return QuizModel(
+  //           question: question['question'],
+  //           options: question['options'],
+  //           answer: question['answer'],
+  //         );
+  //       }).toList();
+
+  //       notifyListeners();
+  //     } else {
+  //       throw Exception('Failed to load questions');
+  //     }
+  //   } catch (error) {
+  //     throw Exception(error.toString());
+  //   }
+  // }
 }
