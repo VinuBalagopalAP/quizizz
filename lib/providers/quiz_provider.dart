@@ -1,6 +1,9 @@
+import 'dart:convert';
+
+import 'package:centrric_assignment/model/quiz_model.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:centrric_assignment/model/quiz_model.dart';
+import 'package:http/http.dart' as http;
 
 class QuizProvider with ChangeNotifier {
   int index = 0;
@@ -12,41 +15,34 @@ class QuizProvider with ChangeNotifier {
   int wrongAnswers = 0;
   int streak = 0;
 
-  List<QuizModel> _questions = [
-    QuizModel(
-      question: 'Which Planet In Our Solar System is Known as Red Planet?',
-      options: {
-        1: 'Alexander Fleming',
-        2: 'Alexander Graham Bell',
-        3: 'Thomas Alva Edison',
-        4: 'Mars',
-      },
-      answer: 'Mars',
-    ),
-    QuizModel(
-      question: 'Who invented the Light Bulb?',
-      options: {
-        1: 'Jupiter',
-        2: 'Alexander Graham Bell',
-        3: 'Thomas Alva Edison',
-        4: 'Mars',
-      },
-      answer: 'Thomas Alva Edison',
-    ),
-    QuizModel(
-      question: 'Who discovered Penincillin?',
-      options: {
-        1: 'Alexander Fleming',
-        2: 'Alexander Graham Bell',
-        3: 'Thomas Alva Edison',
-        4: 'Jupiter',
-      },
-      answer: 'Alexander Graham Bell',
-    ),
-  ];
+  List<QuestionModel> _questions = [];
 
-  List<QuizModel> get questions {
-    return [..._questions];
+  List<QuestionModel> get questions => _questions;
+
+  Future<void> getQuestions() async {
+    debugPrint('getQuestions');
+    final url =
+        Uri.parse("https://quiz-app-flutter-vinu.herokuapp.com/api/questions");
+
+    try {
+      final response = await http.get(url);
+
+      // debugPrint(response.body);
+
+      if (response.statusCode == 200) {
+        List data = json.decode(response.body);
+        _questions = data.map((e) => QuestionModel.fromJson(e)).toList();
+
+        // debugPrint(_questions.toString());
+
+        notifyListeners();
+      } else {
+        throw Exception('Failed to load questions');
+      }
+    } catch (error) {
+      debugPrint(error.toString());
+      throw Exception('Failed to load questions');
+    }
   }
 
   void onReset(int? i) {
@@ -104,30 +100,4 @@ class QuizProvider with ChangeNotifier {
     hasAnswered = false;
     notifyListeners();
   }
-
-  // Future<void> getQuestions() async {
-  //   final uri = "https://api-questions.herokuapp.com/questions";
-
-  //   try {
-  //     final response = await http.get(Uri.parse(uri));
-
-  //     if (response.statusCode == 200) {
-  //       final questions = json.decode(response.body);
-
-  //       _questions = questions.map((question) {
-  //         return QuizModel(
-  //           question: question['question'],
-  //           options: question['options'],
-  //           answer: question['answer'],
-  //         );
-  //       }).toList();
-
-  //       notifyListeners();
-  //     } else {
-  //       throw Exception('Failed to load questions');
-  //     }
-  //   } catch (error) {
-  //     throw Exception(error.toString());
-  //   }
-  // }
 }

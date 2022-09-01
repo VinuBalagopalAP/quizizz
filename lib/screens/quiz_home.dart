@@ -18,12 +18,26 @@ class QuizHome extends StatefulWidget {
 
 class _QuizHome extends State<QuizHome> {
   @override
+  void initState() {
+    Provider.of<QuizProvider>(context, listen: false).getQuestions();
+
+    var quiz = Provider.of<QuizProvider>(context);
+    var questions = quiz.questions;
+    debugPrint(questions.toString());
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final displayWidth = MediaQuery.of(context).size.width;
 
     var quiz = Provider.of<QuizProvider>(context);
     var questions = quiz.questions;
+    debugPrint(questions.length.toString());
+
     int index = quiz.index;
+    debugPrint('index: $index');
     bool hasFinished = quiz.hasFinshed;
     bool hasAnswered = quiz.hasAnswered;
     String? selectedAnswer = quiz.selectedAnswer;
@@ -107,7 +121,7 @@ class _QuizHome extends State<QuizHome> {
                                                   ? visible(
                                                       selectedAnswer!,
                                                       questions[index]
-                                                          .options[1]!,
+                                                          .options[1],
                                                     )
                                                   : true),
                                           AnswerGridIterm(
@@ -123,7 +137,7 @@ class _QuizHome extends State<QuizHome> {
                                                   ? visible(
                                                       selectedAnswer!,
                                                       questions[index]
-                                                          .options[2]!,
+                                                          .options[2],
                                                     )
                                                   : true),
                                           AnswerGridIterm(
@@ -139,7 +153,7 @@ class _QuizHome extends State<QuizHome> {
                                                   ? visible(
                                                       selectedAnswer!,
                                                       questions[index]
-                                                          .options[3]!,
+                                                          .options[3],
                                                     )
                                                   : true),
                                           AnswerGridIterm(
@@ -155,7 +169,7 @@ class _QuizHome extends State<QuizHome> {
                                                   ? visible(
                                                       selectedAnswer!,
                                                       questions[index]
-                                                          .options[4]!,
+                                                          .options[4],
                                                     )
                                                   : true),
                                         ])),

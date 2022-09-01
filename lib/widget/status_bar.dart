@@ -6,6 +6,7 @@ class StatusBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var quiz = Provider.of<QuizProvider>(context);
+
     var streak = quiz.streak;
     var questionLength = quiz.questions.length;
     var index = quiz.index;
